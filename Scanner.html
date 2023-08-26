@@ -1,0 +1,38 @@
+<pre>
+public class Main {
+    //This is the slowest way to read a file (there are probably slower but you get the point)
+    //This is also the most commonly taught way to read a file due to simplicity/easily implemented versatility
+    public static void main(String[]args){
+        File file = new File("C:\someFile.txt);
+        String string = "someString";
+ 
+        //Reading a file
+        Scanner scannerFile = new Scanner(file);
+ 
+        //Reading a string
+        Scanner scannerString = new Scanner(string);
+         
+        //Reading what you type into the console/terminal
+        Scanner scannerInput = new Scanner(System.in);
+ 
+        //Waits for the user to: type text into the console and press enter
+        scannerInput.nextLine();
+        //If you don't save the above line to a string, you lose it
+        //You can save the line from the file/string/userInput by using the line below
+        String lineInput = scannerInput.nextLine();
+ 
+        //requires no user input, just reads the next line of the file
+        String lineFile = scannerFile.nextLine();
+ 
+        //Reads the next "token" of the file
+        //For now you can think of a "token" as a single "word" (sequence of consecutive characters between spaces and newlines)
+        String tokenFile = scannerFile.next();
+ 
+        System.out.println(lineInput + "\n" + lineFile + "\n" + tokenFile);
+ 
+        //Java should be doing this automatically but I think it's good practice to write this anyway
+        scannerFile.close(); scannerInput.close(); scannerString.close();
+         
+    }
+}
+</pre>
