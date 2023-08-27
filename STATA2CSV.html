@@ -1,0 +1,8 @@
+<p>Converting STATA (.dta) files from STARData to CSV (comma separated values) files. Sorry it's in Python. The Pandas library no cap has native support and I was too lazy to read STATA's documentation to analyze their format.</p>
+<p>Here is the stackoverflow post where this code comes from. I'm only repeating the necessary code below in case the link doesn't work in the future. <a href="https://stackoverflow.com/questions/2536047/convert-a-dta-file-to-csv-without-stata-software">https://stackoverflow.com/questions/2536047/convert-a-dta-file-to-csv-without-stata-software</a></p>
+<pre>
+>>> import pandas as pd
+>>> data = pd.io.stata.read_stata('my_stata_file.dta')
+>>> data.to_csv('my_stata_file.csv')
+</pre>
+<video width="640" height="360" controls><source src="VideosFreeToDownloadSeriouslyGoAhead/STATA2CSV.mp4" type="video/mp4"></video>
