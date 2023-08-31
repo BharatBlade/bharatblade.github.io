@@ -1,0 +1,6 @@
+
+public class scihub {
+	public static void main(String[]args) {
+		BufferedReader br = new BufferedReader(new FileReader(new File("F:\\scimag_2020-05-30.sql")));
+	}
+}

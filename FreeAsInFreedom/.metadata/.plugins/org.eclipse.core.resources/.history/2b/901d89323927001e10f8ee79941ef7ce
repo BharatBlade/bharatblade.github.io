@@ -1,0 +1,41 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.util.Arrays;
+import java.util.TreeSet;
+
+public class scihub {
+	public static void main(String[]args) throws Exception {
+		BufferedReader br = new BufferedReader(new FileReader(new File("F:\\scimag_2020-05-30.sql")));
+		for(int i = 0; i < 67; i++) {
+			br.readLine();
+		}
+		
+		String line = br.readLine();
+		double count = 0;
+		TreeSet<String> tree = new TreeSet<String>();
+		while(line != null) {
+	//		System.out.println(br.readLine());
+			String [] arr = line.split("\\),\\(");
+			for(int i = 0; i < arr.length; i++) {
+				String line2 = arr[i];
+				String [] arr2 = line2.split("','");
+				try {
+					tree.add(arr2[11]);
+				}
+				catch(Exception e) {}
+			}
+			count++;
+			if(count % 1000 == 0) {
+				System.out.println(count);
+				Thread.sleep(1000);
+			}
+			line = br.readLine();
+		}
+		System.out.println(tree.size());
+		
+		
+		
+		br.close();
+	}
+}
