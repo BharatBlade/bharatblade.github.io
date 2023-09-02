@@ -18,8 +18,8 @@ import org.apache.parquet.io.InputFile;
 public class FastParquet {
 	
 	public ParquetReader<GenericRecord> reader;
-	public String delimiter = "\",\""; 
-	public FastReader scanner; 
+	public String delimiter = ","; 
+	public FastReader scanner = new FastReader(); 
 	public FastWriter writer;
 	public FastParquet() {
 		try {
@@ -114,11 +114,11 @@ public class FastParquet {
 		String line = cr.nextLine();
 
 		//TEMP JUST FOR JUSTIN
-		boolean deleteFirstLastCharacters = true;
-//		if(delimiter.equals("\",\"")) {
-//			deleteFirstLastCharacters = true;
-//		}
-//		line = "Index" + line;
+		boolean deleteFirstLastCharacters = false;
+		if(delimiter.equals("\",\"")) {
+			deleteFirstLastCharacters = true;
+		}
+		line = "Index" + line;
 		
 		String [] fields = scanner.csvLineToArray(line, delimiter, deleteFirstLastCharacters);
 		Schema avroSchema = (new Schema.Parser().setValidate(true)).parse(createSchema(fields));
@@ -137,10 +137,18 @@ public class FastParquet {
 			.build()) {
 				line = cr.nextLine();
 				while(line != null) {
-					writer.write(createRecord(line, fields, avroSchema));
-					count++;
-					if(count % 100000 == 0) {
-						System.out.println(count + "\t" + (System.currentTimeMillis() - time));
+					org.apache.avro.generic.GenericData.Record record = createRecord(line, fields, avroSchema);
+					try {
+						System.out.println(record);
+						Thread.sleep(10);
+						writer.write(record);
+						count++;
+						if(count % 100000 == 0) {
+							System.out.println(count + "\t" + (System.currentTimeMillis() - time));
+						}
+					}
+					catch(Exception e) {
+						System.out.println(record);
 					}
 					line = cr.nextLine();
 				}

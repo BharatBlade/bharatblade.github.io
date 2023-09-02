@@ -1,0 +1,223 @@
+package File;
+import java.io.File;
+import java.io.IOException;
+import java.util.Arrays;
+import org.apache.avro.Schema;
+import org.apache.avro.Schema.Parser;
+import org.apache.avro.generic.GenericData;
+import org.apache.avro.generic.GenericRecord;
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.Path;
+import org.apache.parquet.avro.AvroParquetReader;
+import org.apache.parquet.avro.AvroParquetWriter;
+import org.apache.parquet.hadoop.ParquetReader;
+import org.apache.parquet.hadoop.ParquetWriter;
+import org.apache.parquet.hadoop.metadata.CompressionCodecName;
+import org.apache.parquet.io.InputFile;
+
+public class FastParquet {
+	
+	public ParquetReader<GenericRecord> reader;
+	public String delimiter = ","; 
+	public FastReader scanner = new FastReader(); 
+	public FastWriter writer;
+	public FastParquet() {
+		try {
+			System.setProperty("hadoop.home.dir", new java.io.File(".").getCanonicalPath() + "\\hadoop-3.0.0");
+		}
+		catch (IOException e) {}
+	}
+//	public FastParquet(String inputFile, String outputFile) {
+//		scanner = new FastReader(inputFile);
+////		printer = new FastWriter(outputFile);
+//		try {
+//			System.setProperty("hadoop.home.dir", new java.io.File(".").getCanonicalPath() + "\\hadoop-3.0.0");
+//		}
+//		catch (IOException e) {}
+//	}
+	@SuppressWarnings("deprecation")
+	public void parquetReader(String filePath) {
+		try { reader = new AvroParquetReader<GenericRecord>(new Path((new File(filePath)).toString())); } 
+		catch (Exception e) {}
+	}
+	
+	public String nextLine() {
+		try { GenericRecord nextRecord = reader.read(); return nextRecord.toString(); } catch (Exception e1) {}
+		return null;
+	}
+	public String [] nextLineToArray(String delim, boolean removeFirstAndLastCh) {
+		try { return new FastReader().csvLineToArray(nextLine(), delim, removeFirstAndLastCh); } catch (Exception e) { return null; }
+	}
+	
+	public void printToConsole(int sleepIntervalMilliseconds) {
+        try {
+            GenericRecord nextRecord = reader.read();
+            while (nextRecord != null) {
+                System.out.println(nextRecord);
+                Thread.sleep(sleepIntervalMilliseconds);
+                nextRecord = reader.read();
+            }
+            reader.close();
+        } catch (Exception e) {}
+    }
+
+	public void printToTxt(String filePath) {
+        try {
+            GenericRecord nextRecord = reader.read();
+            while (nextRecord != null) {
+            	writer.println(nextRecord.toString());
+                nextRecord = reader.read();
+            }
+            reader.close();
+        } catch (Exception e) {}
+    }
+	
+	public void parquetCloseReader() {
+		try { reader.close(); }
+		catch (IOException e) {}
+	}
+	public String createSchema(String[] fields) {
+		String schema = "{"
+				+ "\"namespace\": \"org.myorg.myname\",\"type\": \"record\","
+				+ "\"name\": \"patient\",\""
+				+ "fields\": [ ";
+		for(int i = 0; i < fields.length-1; i++) {
+			schema += "{\"name\": \"" + fields[i].replace(" ", "") + "\", \"type\": [\"string\", \"null\"]}, ";
+		}
+		schema += "{\"name\": \"" + fields[fields.length-1].replace(" ", "") + "\", \"type\": [\"string\", \"null\"]} ]}";
+		schema = schema.replace(".", "").replace("(", "").replace(")", "").replace("_", "");
+		return schema;
+	}
+	
+	public GenericData.Record createRecord(String line, String [] fields, Schema avroSchema){
+		String line2 = cleanTriNetXGarbage(line);
+		String [] arr = scanner.csvLineToArray(line2, delimiter, false);
+		GenericData.Record record = new GenericData.Record(avroSchema);
+		for(int i = 0; i < fields.length; i++) {
+			record.put(cleanNPPES(fields[i]), arr[i]);
+		}
+		return record;
+	}
+	
+	public String cleanTriNetXGarbage(String line2) {
+		line2 = line2.replace("\"", "");
+		line2 = line2.replace("true", "T");
+		line2 = line2.replace("false", "F");
+		line2 = line2.replace("True", "T");
+		line2 = line2.replace("False", "F");		
+		line2 = line2.replace(",", delimiter);
+		return line2;
+	}
+	
+	public void parquetWriteCSVToParquet(String inputFile, String outputFile, CompressionCodecName codec, int pageSize, long rowGroupSize) {
+		FastReader cr = new FastReader(inputFile);
+		String line = cr.nextLine();
+
+		//TEMP JUST FOR JUSTIN
+		boolean deleteFirstLastCharacters = false;
+		if(delimiter.equals("\",\"")) {
+			deleteFirstLastCharacters = true;
+		}
+		line = "Index" + line;
+		
+		String [] fields = scanner.csvLineToArray(line, delimiter, deleteFirstLastCharacters);
+		Schema avroSchema = (new Schema.Parser().setValidate(true)).parse(createSchema(fields));
+		System.out.println(line);
+		System.out.println(Arrays.toString(fields));
+		double count = 0;
+		long time = System.currentTimeMillis();
+		try {
+			try (@SuppressWarnings("deprecation")
+			ParquetWriter<Object> writer = AvroParquetWriter.builder(new Path(outputFile))
+			.withSchema(avroSchema)
+			.withCompressionCodec(codec)
+			.withConf(new Configuration())
+			.withPageSize(pageSize)
+			.withRowGroupSize(rowGroupSize)
+			.build()) {
+				line = cr.nextLine();
+				while(line != null) {
+					org.apache.avro.generic.GenericData.Record record = createRecord(line, fields, avroSchema);
+					try {
+						System.out.println(record);
+						writer.write(record);
+						count++;
+						if(count % 100000 == 0) {
+							System.out.println(count + "\t" + (System.currentTimeMillis() - time));
+						}
+					}
+					catch(Exception e) {
+						System.out.println(record);
+					}
+					line = cr.nextLine();
+				}
+				writer.close();
+			}				   
+		} catch (Exception ex) { ex.printStackTrace(System.out); }
+		cr.close();
+	}
+	
+	public void parquetWriteMultipleCSVsToParquet(String directory, String outputFile, CompressionCodecName codec, int pageSize, long rowGroupSize) {
+		scanner.loadFiles(directory);
+		String line = scanner.header(scanner.files[0].getAbsolutePath());
+		System.out.println(line);
+		String [] fields = scanner.csvLineToArray(line, delimiter, true);
+		System.out.println(Arrays.toString(fields));		
+		Parser parser = new Schema.Parser().setValidate(true);
+		Schema avroSchema = parser.parse(createSchema(fields));		
+		try {
+			Configuration conf = new Configuration();
+			Path path = new Path(outputFile);
+			try (@SuppressWarnings("deprecation")
+			ParquetWriter<Object> writer = AvroParquetWriter.builder(path)
+			.withSchema(avroSchema)
+			.withCompressionCodec(codec)
+			.withConf(conf)
+			.withPageSize(pageSize) //For compression
+			.withRowGroupSize(rowGroupSize) //For write buffering (Page size)
+			.build()) {
+				for(int j = 0; j < scanner.files.length; j++) {
+					System.out.println(scanner.fileNames[j]);
+					FastReader cr = new FastReader(scanner.fileNames[j]);
+					cr.nextLine();//remove header line
+					line = cr.nextLine();
+					while(line != null) {
+						writer.write(createRecord(line, fields, avroSchema));
+						line = cr.nextLine();
+					}
+					cr.close();
+				}
+				writer.close();
+			}				   
+		} catch (Exception ex) { ex.printStackTrace(System.out); }
+	}
+	
+
+	public String cleanNPPES(String s) {
+		return s.replace(".", "").replace("(", "").replace(")", "").replace("_", "").replace(" ", "");
+	}
+	public static boolean recordContains(GenericRecord nextRecord, String ss) throws Exception {
+		for(int i = 0; i < nextRecord.getSchema().getFields().size(); i++) {
+			if(nextRecord.get(i).toString().toLowerCase().contains(ss.toLowerCase())) {
+				System.out.println(nextRecord);
+				Thread.sleep(1000);
+				return true;
+			}
+		}
+		return false;
+	}
+	public boolean parquetContains(String filePath, String ss) throws Exception {
+		InputFile file = (InputFile) new File(filePath);
+		ParquetReader<GenericRecord> reader = AvroParquetReader.<GenericRecord>builder(file).build();
+		GenericRecord nextRecord = reader.read();
+		while(nextRecord != null) {
+			if(recordContains(nextRecord, ss)) {
+		        reader.close();
+				return true;
+			}
+			nextRecord = reader.read();
+		}
+        reader.close();
+        return false;
+	}
+}
