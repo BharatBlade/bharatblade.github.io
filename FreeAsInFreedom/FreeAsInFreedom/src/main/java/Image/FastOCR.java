@@ -8,46 +8,19 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.*;
 import net.sourceforge.tess4j.Tesseract;
 public class FastOCR {
-	String tessDataPath = "C:\\Users\\johnj\\PortableApps\\EclipsePortable\\Data\\FreeAsInFreedom\\FreeAsInFreedom\\";
+	String tessDataPath = "C:\\Users\\john\\Documents\\bharatblade.github.io\\FreeAsInFreedom\\FreeAsInFreedom\\";
 	FastClipboard c = new FastClipboard();
 	
 	public FastOCR() {
 
 	}
 	
-	public void ocrNBME() {
+	public void ocrText() {
 		String text = ocr();
-		text = text.replace("-\n", "");
-		text = text.replace("\n", " ");
-		text = text.replace("  A)", "\nA)");
-		text = text.replace("  B)", "\nB)");
-		text = text.replace("  C)", "\nC)");
-		text = text.replace("  D)", "\nD)");
-		text = text.replace("  E)", "\nE)");
-		text = text.replace("  F)", "\nF)");
-		text = text.replace("  G)", "\nG)");
-		text = text.replace("  H)", "\nH)");
-		text = text.replace("  I)", "\nI)");
-		text = text.replace("  J)", "\nJ)");
-		text = text.replace("  0)", "\nC)");
-		//text = text.replace(" ", "-");
-		//text = text.replace(" ", "-");
-		text = text.replace("- ", "-");
-		text = text.replace(" -", "-");
-		text = text.replace("  Incorrect Answer", "<br><br>Incorrect Answer");
-		text = text.replace(" Incorrect Answer", "<br><br>Incorrect Answer");
-		text = text.replace("  lncorrectAnswer", "<br><br>Incorrect Answer");
-		text = text.replace(" lncorrectAnswer", "<br><br>Incorrect Answer");
-		text = text.replace("lncorrectAnswer", "<br><br>Incorrect Answer");
-		text = text.replace(" IncorrectAnswer", "<br><br>Incorrect Answer");
-		text = text.replace("IncorrectAnswer", "<br><br>Incorrect Answer");
-		text = text.replace("Educational Objective", "<br><br>Educational Objective");
-		text = text.replace("  Educational Objective", "<br><br>Educational Objective");
-		text = text.replace(" Educational Objective", "<br><br>Educational Objective");
 		System.out.println(text);
 		c.ClipPut(text);
 	}
-	
+		
 	@SuppressWarnings("deprecation")
 	public String ocr() {
 		Tesseract tesseract = new Tesseract();
