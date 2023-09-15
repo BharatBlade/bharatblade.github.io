@@ -188,8 +188,8 @@
             </children>
             <children xsi:type="basic:PartSashContainer" xmi:id="_YKSay0heEe6bSvVjL85HkQ" containerData="8630" selectedElement="_YKSazEheEe6bSvVjL85HkQ" horizontal="true">
               <children xsi:type="basic:PartSashContainer" xmi:id="_YKSazEheEe6bSvVjL85HkQ" containerData="5000" selectedElement="_YKSazUheEe6bSvVjL85HkQ" horizontal="true">
-                <children xsi:type="advanced:Placeholder" xmi:id="_YKSazUheEe6bSvVjL85HkQ" elementId="org.eclipse.ui.editorss" containerData="5381" ref="_YKScv0heEe6bSvVjL85HkQ"/>
-                <children xsi:type="basic:PartStack" xmi:id="_YKSazkheEe6bSvVjL85HkQ" elementId="bottom" containerData="4619" selectedElement="_YKSa00heEe6bSvVjL85HkQ">
+                <children xsi:type="advanced:Placeholder" xmi:id="_YKSazUheEe6bSvVjL85HkQ" elementId="org.eclipse.ui.editorss" containerData="6221" ref="_YKScv0heEe6bSvVjL85HkQ"/>
+                <children xsi:type="basic:PartStack" xmi:id="_YKSazkheEe6bSvVjL85HkQ" elementId="bottom" containerData="3779" selectedElement="_YKSa00heEe6bSvVjL85HkQ">
                   <tags>org.eclipse.e4.secondaryDataStack</tags>
                   <children xsi:type="advanced:Placeholder" xmi:id="_YKSaz0heEe6bSvVjL85HkQ" elementId="org.eclipse.ui.views.ProblemView" toBeRendered="false" ref="_YKSdYEheEe6bSvVjL85HkQ" closeable="true">
                     <tags>View</tags>
@@ -289,7 +289,7 @@
         <tags>EditorStack</tags>
         <tags>active</tags>
         <children xsi:type="basic:Part" xmi:id="_2RoysFJ4Ee6t1oZA0OU3YA" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="OCR.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;OCR.java&quot; partName=&quot;OCR.java&quot; title=&quot;OCR.java&quot; tooltip=&quot;FreeAsInFreedom/src/test/java/OCR/OCR.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/FreeAsInFreedom/src/test/java/OCR/OCR.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;59&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;OCR.java&quot; partName=&quot;OCR.java&quot; title=&quot;OCR.java&quot; tooltip=&quot;FreeAsInFreedom/src/test/java/OCR/OCR.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/FreeAsInFreedom/src/test/java/OCR/OCR.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;100&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
           <tags>removeOnHide</tags>
           <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
@@ -297,19 +297,19 @@
           <tags>activeOnClose</tags>
         </children>
         <children xsi:type="basic:Part" xmi:id="_4Hv_wFJ4Ee6t1oZA0OU3YA" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="FastOCR.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;FastOCR.java&quot; partName=&quot;FastOCR.java&quot; title=&quot;FastOCR.java&quot; tooltip=&quot;FreeAsInFreedom/src/main/java/Image/FastOCR.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/FreeAsInFreedom/src/main/java/Image/FastOCR.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;442&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;FastOCR.java&quot; partName=&quot;FastOCR.java&quot; title=&quot;FastOCR.java&quot; tooltip=&quot;FreeAsInFreedom/src/main/java/Image/FastOCR.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/FreeAsInFreedom/src/main/java/Image/FastOCR.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;145&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
           <tags>removeOnHide</tags>
           <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
         </children>
         <children xsi:type="basic:Part" xmi:id="_Gsd7gFJ7Ee6t1oZA0OU3YA" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="FastImage.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;FastImage.java&quot; partName=&quot;FastImage.java&quot; title=&quot;FastImage.java&quot; tooltip=&quot;FreeAsInFreedom/src/main/java/Image/FastImage.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/FreeAsInFreedom/src/main/java/Image/FastImage.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;1241&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;FastImage.java&quot; partName=&quot;FastImage.java&quot; title=&quot;FastImage.java&quot; tooltip=&quot;FreeAsInFreedom/src/main/java/Image/FastImage.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/FreeAsInFreedom/src/main/java/Image/FastImage.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;4024&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
           <tags>removeOnHide</tags>
           <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
         </children>
         <children xsi:type="basic:Part" xmi:id="_v_LHYFJ-Ee6t1oZA0OU3YA" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="FastClipboard.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;FastClipboard.java&quot; partName=&quot;FastClipboard.java&quot; title=&quot;FastClipboard.java&quot; tooltip=&quot;FreeAsInFreedom/src/main/java/Utilities/FastClipboard.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/FreeAsInFreedom/src/main/java/Utilities/FastClipboard.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;0&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;FastClipboard.java&quot; partName=&quot;FastClipboard.java&quot; title=&quot;FastClipboard.java&quot; tooltip=&quot;FreeAsInFreedom/src/main/java/Utilities/FastClipboard.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/FreeAsInFreedom/src/main/java/Utilities/FastClipboard.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;198&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
           <tags>removeOnHide</tags>
           <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
@@ -479,7 +479,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_YKSdcEheEe6bSvVjL85HkQ" elementId="org.eclipse.ui.workbench.file">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_Lyjy8FJ4Ee6t1oZA0OU3YA" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_YKTEskheEe6bSvVjL85HkQ"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_8mWfcFPgEe6ADMpBlGSisA" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_YKTEskheEe6bSvVjL85HkQ"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_YKSdfUheEe6bSvVjL85HkQ" elementId="group.edit" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -510,7 +510,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_YKSdq0heEe6bSvVjL85HkQ" elementId="org.eclipse.ui.workbench.navigate">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_LylBFlJ4Ee6t1oZA0OU3YA" elementId="org.eclipse.ui.window.pinEditor" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_YKTEPkheEe6bSvVjL85HkQ"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_8mXtkFPgEe6ADMpBlGSisA" elementId="org.eclipse.ui.window.pinEditor" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_YKTEPkheEe6bSvVjL85HkQ"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_YKSdt0heEe6bSvVjL85HkQ" elementId="org.eclipse.jdt.ui.ClassFileEditor" visible="false">
         <tags>Draggable</tags>

@@ -29,27 +29,33 @@ public class FastImage {
 		
 	}
 	
-	public int [][] readImage(File f, int w, int h) throws Exception {
-		BufferedImage image = ImageIO.read(f);
-		int [][] graph = new int[w][h];
-		for(int i = 0; i < w; i++) {
-			for(int j = 0; j < h; j++) {
-		        int clr = image.getRGB(i, j)/1;
-		        if(clr < 0 && clr >= -5000000) {
-		        	clr = -1;
-		        }
-		        graph[i][j] = clr;
+	public int [][] readImage(File f, int w, int h) {
+		try {
+			BufferedImage image = ImageIO.read(f);
+			int [][] graph = new int[w][h];
+			for(int i = 0; i < w; i++) {
+				for(int j = 0; j < h; j++) {
+			        int clr = image.getRGB(i, j)/1;
+			        if(clr < 0 && clr >= -5000000) {
+			        	clr = -1;
+			        }
+			        graph[i][j] = clr;
+				}
 			}
-		}
-		return graph;
+			return graph;			
+		} catch (IOException e) {return null;}
+		
+		
 	}
 	
-	public Image readImageFromClipboard() throws Exception {
+	public Image readImageFromClipboard() {
 		return c.getImageFromClipboard();
 	}
 	
-	public void readImageFromFile(File file) throws Exception {
-		ImageIO.write((RenderedImage) ImageIO.read(file), "jpg", new File("image2.jpg"));
+	public void readImageFromFile(File file) {
+		try {
+			ImageIO.write((RenderedImage) ImageIO.read(file), "jpg", new File("image2.jpg"));
+		} catch (IOException e) {}
 	}
 	
 	public void writeImage(int [][] color) {
@@ -118,26 +124,30 @@ public class FastImage {
 		System.out.println(" {color: " + hex.toUpperCase() + "}");
 	}
 	
-	public void ResolutionFilter(File dirPath, String writePath, String ext) throws Exception {
-		File filesList[] = dirPath.listFiles();
-		for(File file : filesList) {
-			if(file.isFile()) {
-				Dimension d = getImageDimensions(file);
-				double ar = Math.round((double)d.height/d.width*10.0)/10.0;
-				if(d.width > 599 && d.height > 959 && ar > 1.1 && ar < 2.1) {
-					Files.copy(file.toPath(), (new File(writePath + count + "." + ext)).toPath(), StandardCopyOption.REPLACE_EXISTING); count++;
-					if(count % 1000 == 0) {
-						System.out.print(count + "\t");
+	public void ResolutionFilter(File dirPath, String writePath, String ext) {
+		try {
+			File filesList[] = dirPath.listFiles();
+			for(File file : filesList) {
+				if(file.isFile()) {
+					Dimension d = getImageDimensions(file);
+					double ar = Math.round((double)d.height/d.width*10.0)/10.0;
+					if(d.width > 599 && d.height > 959 && ar > 1.1 && ar < 2.1) {
+						Files.copy(file.toPath(), (new File(writePath + count + "." + ext)).toPath(), StandardCopyOption.REPLACE_EXISTING); count++;
+						if(count % 1000 == 0) {
+							System.out.print(count + "\t");
+						}
 					}
-				}
-			} else { ResolutionFilter(file, writePath, ext); }
+				} else { ResolutionFilter(file, writePath, ext); }
+			}
 		}
+		catch(Exception e) {}
 	}
 	
-	public Dimension getImageDimensions(File imgFile) throws Exception {
+	public Dimension getImageDimensions(File imgFile) {
 		int pos = imgFile.getName().lastIndexOf(".");
 		if (pos == -1)
-		throw new Exception("No extension for file: " + imgFile.getAbsolutePath());
+			return null;
+		//throw new Exception("No extension for file: " + imgFile.getAbsolutePath());
 		String suffix = imgFile.getName().substring(pos + 1);
 		Iterator<ImageReader> iter = ImageIO.getImageReadersBySuffix(suffix);
 		while(iter.hasNext()) {

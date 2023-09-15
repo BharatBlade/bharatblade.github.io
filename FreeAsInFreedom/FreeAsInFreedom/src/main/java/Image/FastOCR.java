@@ -2,7 +2,8 @@ package Image;
 import java.io.File;
 import javax.imageio.ImageIO;
 
-import java.awt.image.*;
+import java.awt.image.RenderedImage;
+import java.awt.image.BufferedImage;
 import net.sourceforge.tess4j.Tesseract;
 public class FastOCR {
 	public String tessDataPath = "C:\\Users\\john\\Documents\\bharatblade.github.io\\FreeAsInFreedom\\FreeAsInFreedom\\";
@@ -16,11 +17,15 @@ public class FastOCR {
 		tesseract.setDatapath(path);
 	}
 	
-	public String ocr() throws Exception {
-		ImageIO.write((RenderedImage) fastImage.readImageFromClipboard(), "jpg", new File("image2.jpg"));
-		BufferedImage bufferedImage = ImageIO.read(new File("image2.jpg"));
-		ImageIO.write(imageBlackWhite(bufferedImage), "jpg", new File("image3.jpg"));
-		return tesseract.doOCR(new File("image2.jpg"));
+	public String ocr() {
+		try {
+			ImageIO.write((RenderedImage) fastImage.readImageFromClipboard(), "jpg", new File("image2.jpg"));
+			BufferedImage bufferedImage = ImageIO.read(new File("image2.jpg"));
+			ImageIO.write(imageBlackWhite(bufferedImage), "jpg", new File("image3.jpg"));
+			return tesseract.doOCR(new File("image2.jpg"));
+		} catch (Exception e) {
+			return null;
+		}
 	}
 	
 	public BufferedImage imageBlackWhite(BufferedImage bufferedImage) {
