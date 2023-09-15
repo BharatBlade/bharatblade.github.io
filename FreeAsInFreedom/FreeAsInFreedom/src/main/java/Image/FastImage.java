@@ -1,8 +1,11 @@
 package Image;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.Iterator;
@@ -12,12 +15,15 @@ import javax.imageio.ImageReader;
 import javax.imageio.stream.FileImageInputStream;
 import javax.imageio.stream.ImageInputStream;
 
+import Utilities.FastClipboard;
+
 public class FastImage {
 	
 	public int [] a = {256, 0, 0};
 	public int [] b = {1,0,2,1,0,2};
 	public int step = 0;
 	public int count = 0;
+	public FastClipboard c = new FastClipboard();
 	
 	public FastImage() {
 		
@@ -36,6 +42,14 @@ public class FastImage {
 			}
 		}
 		return graph;
+	}
+	
+	public Image readImageFromClipboard() throws Exception {
+		return c.getImageFromClipboard();
+	}
+	
+	public void readImageFromFile(File file) throws Exception {
+		ImageIO.write((RenderedImage) ImageIO.read(file), "jpg", new File("image2.jpg"));
 	}
 	
 	public void writeImage(int [][] color) {

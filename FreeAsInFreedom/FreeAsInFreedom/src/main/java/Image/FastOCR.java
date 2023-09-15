@@ -2,45 +2,35 @@ package Image;
 import java.io.File;
 import javax.imageio.ImageIO;
 
-import Utilities.FastClipboard;
-
-import java.awt.geom.AffineTransform;
 import java.awt.image.*;
 import net.sourceforge.tess4j.Tesseract;
 public class FastOCR {
-	String tessDataPath = "C:\\Users\\john\\Documents\\bharatblade.github.io\\FreeAsInFreedom\\FreeAsInFreedom\\";
-	FastClipboard c = new FastClipboard();
-	
+	public String tessDataPath = "C:\\Users\\john\\Documents\\bharatblade.github.io\\FreeAsInFreedom\\FreeAsInFreedom\\";
+	public Tesseract tesseract = new Tesseract();
+	public FastImage fastImage = new FastImage();
 	public FastOCR() {
-
+		tesseract.setDatapath(tessDataPath);
 	}
 	
-	public void ocrText() {
-		String text = ocr();
-		System.out.println(text);
-		c.ClipPut(text);
+	public FastOCR(String path) {
+		tesseract.setDatapath(path);
 	}
-		
-	@SuppressWarnings("deprecation")
-	public String ocr() {
-		Tesseract tesseract = new Tesseract();
-		tesseract.setTessVariable("user_defined_dpi", "96");
-		try {
-			tesseract.setDatapath(tessDataPath); //"..\\Tess4J-3.4.8-src\\Tess4J\\tessdata"
-			ImageIO.write((RenderedImage) c.getImageFromClipboard(), "jpg", new File("image2.jpg"));
-			BufferedImage im = ImageIO.read(new File("image2.jpg"));
-			for (int x = 0; x < im.getWidth(); x++) {
-			    for (int y = 0; y < im.getHeight(); y++) {
-			    	if(im.getRGB(x,y) < 0 && im.getRGB(x,y) > -7000000) {
-			    		im.setRGB(x,y,-1);
-			    	}
-			    }
-			}
-		    FastImage fi = new FastImage();
-		    //im = fi.rotateImage(im);
-			ImageIO.write(im, "jpg", new File("image3.jpg"));
-			System.out.println("STEP 4");
-			return tesseract.doOCR(new File("image3.jpg"));
-		} catch (Exception e) {return null;}
+	
+	public String ocr() throws Exception {
+		ImageIO.write((RenderedImage) fastImage.readImageFromClipboard(), "jpg", new File("image2.jpg"));
+		BufferedImage bufferedImage = ImageIO.read(new File("image2.jpg"));
+		ImageIO.write(imageBlackWhite(bufferedImage), "jpg", new File("image3.jpg"));
+		return tesseract.doOCR(new File("image2.jpg"));
+	}
+	
+	public BufferedImage imageBlackWhite(BufferedImage bufferedImage) {
+		for (int x = 0; x < bufferedImage.getWidth(); x++) {
+		    for (int y = 0; y < bufferedImage.getHeight(); y++) {
+		    	if(bufferedImage.getRGB(x,y) < 0 && bufferedImage.getRGB(x,y) > -7000000) {
+		    		bufferedImage.setRGB(x,y,-1);
+		    	}
+		    }
+		}
+		return bufferedImage;
 	}
 }

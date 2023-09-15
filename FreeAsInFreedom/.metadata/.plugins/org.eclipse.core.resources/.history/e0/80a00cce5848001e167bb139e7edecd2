@@ -1,8 +1,0 @@
-package Readmissions;
-
-import File.FastParquet;
-
-public class Readmissions {
-	FastParquet f = new FastParquet();
-	
-}
