@@ -5,6 +5,6 @@ import Image.FastOCR;
 public class OCR {
 	public static void main(String[]args) {
 		FastOCR ocr = new FastOCR();
-		ocr.ocrNBME();
+		System.out.println(ocr.ocr());
 	}
 }

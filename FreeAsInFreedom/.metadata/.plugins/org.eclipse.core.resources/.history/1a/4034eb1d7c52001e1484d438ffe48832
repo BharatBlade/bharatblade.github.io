@@ -1,0 +1,43 @@
+package Image;
+import java.io.File;
+import javax.imageio.ImageIO;
+
+import Utilities.FastClipboard;
+
+import java.awt.geom.AffineTransform;
+import java.awt.image.*;
+import net.sourceforge.tess4j.Tesseract;
+public class FastOCR {
+	public String tessDataPath = "C:\\Users\\john\\Documents\\bharatblade.github.io\\FreeAsInFreedom\\FreeAsInFreedom\\";
+	public Tesseract tesseract = new Tesseract();
+	public FastImage fi = new FastImage();
+	@SuppressWarnings("deprecation")
+	public FastOCR() {
+		tesseract.setTessVariable("user_defined_dpi", "96");
+		tesseract.setDatapath(tessDataPath);
+	}
+	
+	@SuppressWarnings("deprecation")
+	public FastOCR(String path) {
+		tesseract.setTessVariable("user_defined_dpi", "96");
+		tesseract.setDatapath(path);
+	}
+	
+	public String ocr() {
+		try {
+		    
+			ImageIO.write((RenderedImage) fi.readImageFromClipboard(), "jpg", new File("image2.jpg"));
+			BufferedImage im = ImageIO.read(new File("image2.jpg"));
+			for (int x = 0; x < im.getWidth(); x++) {
+			    for (int y = 0; y < im.getHeight(); y++) {
+			    	if(im.getRGB(x,y) < 0 && im.getRGB(x,y) > -7000000) {
+			    		im.setRGB(x,y,-1);
+			    	}
+			    }
+			}
+			ImageIO.write(im, "jpg", new File("image3.jpg"));
+			System.out.println("STEP 4");
+			return tesseract.doOCR(new File("image3.jpg"));
+		} catch (Exception e) {return null;}
+	}
+}
