@@ -1,3 +1,5 @@
+package Math;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 public class coefficientHandler {

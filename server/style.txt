@@ -1,0 +1,101 @@
+{{Front}}
+
+<hr id=answer>
+
+{{Back}}
+<img src="null" id="s1"></img>
+<br>
+<button type="button" id = "s2">New Image</button>
+<button type="button" id = "s3">Hide</button>
+
+<!--iframe src="https://freesound.org/data/previews/173/173617_344424-lq.mp3" allow="autoplay" style="display:none" id="iframeAudio"></iframe--!>
+
+<script>
+	var att = "";
+	var ttemp = "";
+	function testImage(URL) {
+		var tester=new Image();tester.onload=imageFound;tester.onerror=imageNotFound;tester.src=URL;
+	}
+	function imageFound() {}
+	function imageNotFound() {getImage()}
+	function getImage(){
+		const genRanHex = size => [...Array(size)].map(() => Math.floor(Math.random() * 16).toString(16)).join('');
+		var hexRand = genRanHex(5);
+		var randHex = "https://disco.scrolller.com/media/" + hexRand + ".jpg";
+		var randHex2 = "https://imgflip.com/embed/" + hexRand;
+		var randDec = "https://www.hentaicloud.com/media/photos/" + Math.floor((Math.random() * 186633) + 1) + ".jpg";
+		var randDec2 = "https://raw.githubusercontent.com/BharatBlade/Data/master/" + Math.floor((Math.random() * 2380) + 1) + ".jpg"
+		//var file = readTextFile("https://raw.githubusercontent.com/jacksparrow4/data/master/file.txt");
+		//var file = readTextFile2("https://raw.githubusercontent.com/jacksparrow4/mp/master/data9.txt");
+		//att
+		var choice = randDec2;
+		document.getElementById("s1").src = choice;
+		testImage(choice);
+	}
+	function hideImage(){
+		if(document.getElementById("s1").style.visibility == "visible"){
+			document.getElementById("s1").style.visibility = "hidden";
+		}
+		else{
+			document.getElementById("s1").style.visibility = "visible";
+		}
+	}
+	function readTextFile(file){
+		var rawFile = new XMLHttpRequest();
+		rawFile.open("GET", file, false);
+		rawFile.onreadystatechange = function (){
+			if(rawFile.readyState === 4){
+				if(rawFile.status === 200 || rawFile.status == 0){
+					var allText = rawFile.responseText;
+					var lines = allText.split('\n');
+					strTemp = lines[Math.floor((Math.random() * lines.length))];
+					var rn = Math.floor((Math.random() * parseInt(strTemp.substring(strTemp.indexOf(",")+1))) + 1);
+					var rn2 = Math.floor((Math.random() * 16) + 1);
+					if(rn < 10){	rn = "0" + rn;}
+					if(rn2 < 10){rn2 = "0" + rn2;}
+					ttemp = "https://www.mypornstarbook.net/pornstars/" + strTemp.substring(0,1) + "/" + strTemp.substring(0, strTemp.indexOf(",")) + "/gallery" + rn + "/images/" + rn2 + ".jpg";
+				}
+			}
+		}
+	rawFile.send(null);
+	}
+		function readTextFile2(file){
+		var rawFile = new XMLHttpRequest();
+		rawFile.open("GET", file, false);
+		rawFile.onreadystatechange = function (){
+			if(rawFile.readyState === 4){
+				if(rawFile.status === 200 || rawFile.status == 0){
+					var allText = rawFile.responseText;
+					var lines = allText.split('\n');
+					strTemp = lines[Math.floor((Math.random() * lines.length))];
+					ttemp = strTemp;
+				}
+			}
+		}
+	rawFile.send(null);
+	}
+
+function loadDoc() {
+	fetch("http://localhost:8000")
+		.then(response => response.text())
+		.then(function (text) {
+			att = "http://" + text;
+
+			getImage();
+		})
+}
+function loadDoc2() {
+	fetch("https://meme-api.herokuapp.com/gimme/HentaiMemes")
+		.then(response => response.text())
+		.then(function (text) {
+			ttemp = text.substring(text.indexOf("url")+6, text.indexOf("\",\"nsfw"))
+			getImage()
+		})
+}
+
+
+	getImage() 
+	document.getElementById('s2').onclick = function() {getImage()};
+	document.getElementById('s3').onclick = function() {hideImage()};
+
+</script>

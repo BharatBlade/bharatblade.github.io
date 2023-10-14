@@ -1,0 +1,3 @@
+heptene 	bromoheptane
+ethene 	bromoethane
+cyclohexyl methene 	 cyclohexyl bromomethane

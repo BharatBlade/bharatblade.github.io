@@ -1,0 +1,15 @@
+heptene 	bromoheptane
+hexene 	bromohexane
+pentene 	bromopentane
+butene 	bromobutane
+propene 	bromopropane
+ethene 	bromoethane
+benzyl pentene 	 benzyl bromopentane
+benzyl butene 	 benzyl bromobutane
+benzyl propene 	 benzyl bromopropane
+benzyl ethene 	 benzyl bromoethane
+cyclohexyl pentene 	 cyclohexyl bromopentane
+cyclohexyl butene 	 cyclohexyl bromobutane
+cyclohexyl propene 	 cyclohexyl bromopropane
+cyclohexyl ethene 	 cyclohexyl bromoethane
+cyclohexyl methene 	 cyclohexyl bromomethane

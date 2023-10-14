@@ -33,7 +33,13 @@ public class Atom {
 		z = 0;
     }
     
+    public Atom(double x, double y, double z) {
+    	this.x = x;
+    	this.y = y;
+    	this.z = z;
+    }
+    
     public String toString(){
-    	return element;
+    	return "(" + x + ", " + y + ", " + z + ")";
     }
 }
