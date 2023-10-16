@@ -1,0 +1,158 @@
+<p>Tutorial</p>
+<ol>
+  <li><a href="eclipse.html">Installing and Setting up Java and Eclipse</a></li>
+  <li><a href="HelloWorld.html">First Project "Hello World"</a></li>  
+</ol>
+
+<p>Quick Intermediate Tutorials</p>
+<ul>
+	<li><a href="OCR.html">How to OCR an image</a></li>	
+</ul>
+
+<p>STAR Data analysis stuff for Justin's research</p>
+<ol>
+	<li><a href="STATA2CSV.html">Converting STATA files to CSV (Python)</a></li>
+	<li>Read the relatively large CSV files with a BufferedReader or my personal <a href="java/CustomReader.java">CustomReader</a></li>
+	<li><a href="java/STARDataPatient.java">STARDataPatient.java</li>
+	<li><a href="java/STARDataFollowUp.java">STARDataFollowUp.java</li>
+	<li><a href="java/Justin.java">Justin.java</a></li>
+</ol>
+<p>Generic code for various research projects</p>
+<ol>
+	<li><a href="java/CSVStripper.java">CSVStripper.java</a> Quickly strips lines from a CSV matching your criteria and prints those lines to a separate csv. How this program works:</li>
+	<ol>
+		<li>First the program will ask you to select the CSV file to be searched</li>
+		<li>Then it will read the csv header to determine what fields are present</li>
+		<li>Then it will display a GUI with n rows, where n is equal to the number of fields detected. Each row will contain the first value for a field, and then an empty inputbox</li>
+		<li>Text you type into the inputbox is what the program will look for in the specified field. If it finds the text you asked for, it will print the whole line (and all other lines that match as well) to a separate CSV.</li>
+	</ol>
+	<li><a href="CSVStripperPerformance.java">CSVStripperPerformance.java</a> Same as CSVStripper but for a folder of CSV files</li>
+</ol>
+<p>Random stuff I will organize better later. Trust me bro.</p>
+<ul>
+	<li><a href="java/Clip.java">Clip.java</a>: Simple Clipboard utility</li>
+	<li><a href="java/Calc.java">Calc.java</a>: Some math stuff</li>
+	<li><a href="java/SoftwareAutomation.java">SoftwareAutomation.java</a>: Methods to virtually press keyboard keys</li>
+	<li><a href=""></a></li>
+	<li><a href=""></a></li>
+</ul>
+<p>Relevant databases</p>
+<ul>
+	<li><a href="https://www.whocc.no/atc_ddd_index/">https://www.whocc.no/atc_ddd_index/</a></li>
+	<li><a href="https://lhncbc.nlm.nih.gov/RxNav/APIs/RxNormAPIs.html">https://lhncbc.nlm.nih.gov/RxNav/APIs/RxNormAPIs.html</a></li>
+	<li><a href="https://rxnav.nlm.nih.gov/REST/rxcui?idtype=ATC&id=A02AB01">https://rxnav.nlm.nih.gov/REST/rxcui?idtype=ATC&id=A02AB01</a></li>
+	<li><a href="https://www.malacards.org/">https://www.malacards.org/</a></li>
+	<li><a href="http://www.diseasesdatabase.com/">http://www.diseasesdatabase.com/</a></li>
+	<li><a href="https://en.wikipedia.org/wiki/Category:Redirects_from_ATC_codes">https://en.wikipedia.org/wiki/Category:Redirects_from_ATC_codes</a></li>
+	<li><a href="https://bioportal.bioontology.org/ontologies/RXNORM?p=classes&conceptid=root">https://bioportal.bioontology.org/ontologies/RXNORM?p=classes&conceptid=root</a></li>
+</ul>
+<p>Free As In Freedom</p>
+<ul>
+	<li>Dependencies: <a href="java/pom.xml">pom.xml</a></li>
+	<li>CSV
+		<ul>
+			<li><a href="java/CSV/CSVStripper.java">CSVStripper.java</a></li>
+			<li><a href="java/CSV/CSVStripperPerformance.java">CSVStripperPerformance.java</a></li>
+			<li><a href="java/CSV/CSVUniqueValues.java">CSVUniqueValues.java</a></li>
+		</ul>
+	</li>
+	<li>File
+		<ul>
+			<li><a href="java/File/ArraySorting.java">ArraySorting.java</a></li>
+			<li><a href="java/File/FastCSV.java">FastCSV.java</a></li>
+			<li><a href="java/File/FastGzip.java">FastGzip.java</a></li>
+			<li><a href="java/File/FastParquet.java">FastParquet.java</a></li>
+			<li><a href="java/File/FastReader.java">FastReader.java</a></li>
+			<li><a href="java/File/FastWriter.java">FastWriter.java</a></li>
+			<li><a href="java/File/FileExtended.java">FileExtended.java</a></li>
+			<li><a href="java/File/FileProps.java">FileProps.java</a></li>
+		</ul>
+	</li>
+	<li>Image
+		<ul>
+			<li><a href="java/Image/FastImage.java">FastImage.java</a></li>
+			<li><a href="java/Image/FastOCR.java">FastOCR.java</a></li>
+		</ul>
+	</li>
+	<li>Math
+		<ul>
+			<li><a href="java/Math/FastStatistics.java">FastStatistics.java</a></li>
+		</ul>
+	</li>
+	<li>NeuralNetwork
+		<ul>
+			<li><a href="java/NeuralNetwork/"></a></li>
+			<li><a href="java/NeuralNetwork/"></a></li>
+			<li><a href="java/NeuralNetwork/"></a></li>
+		</ul>
+	</li>
+	<li>RMED
+		<ul>
+			<li><a href="java/RMED/"></a></li>
+			<li><a href="java/RMED/"></a></li>
+			<li><a href="java/RMED/"></a></li>
+		</ul>
+	</li>
+	<li>Science
+		<ul>
+			<li><a href="java/Science/Atom.java">Atom.java</a></li>
+			<li><a href="java/Science/Molecule.java">Molecule.java</a></li>
+			<li><a href="java/Science/FastNMR.java">FastNMR.java</a></li>
+		</ul>
+	</li>
+	<li>STARData
+		<ul>
+			<li><a href="java/STARData/STARDataFollowUp.java">STARDataFollowUp.java</a></li>
+			<li><a href="java/STARData/STARDataPatient.java">STARDataPatient.java</a></li>
+		</ul>
+	</li>
+	<li>TriNetX
+		<ul>
+			<li><a href="java/TriNetX/Constants.java">Constants.java</a></li>
+			<li><a href="java/TriNetX/SplitFiles.java">SplitFiles.java</a></li>
+		</ul>
+	</li>
+	<li>Utilities
+		<ul>
+			<li><a href="java/Utilities/Constants.java">Constants.java</a></li>
+			<li><a href="java/Utilities/FastCalc.java">FastCalc.java</a></li>
+			<li><a href="java/Utilities/FastClipboard.java">FastClipboard.java</a></li>
+			<li><a href="java/Utilities/FastData.java">FastData.java</a></li>
+			<li><a href="java/Utilities/FastDate.java">FastDate.java</a></li>
+			<li><a href="java/Utilities/FastList.java">FastList.java</a></li>
+			<li><a href="java/Utilities/FastRobot.java">FastRobot.java</a></li>
+		</ul>
+	</li>
+	<li>Web
+		<ul>
+			<li><a href="java/Web/FastWeb.java">FastWeb.java</a></li>
+		</ul>
+	</li>
+</ul>
+<p>Large Language Models (LLM): This might sound complicated but it's actually really easy to set up. There's no code you need to write because other, much smarter people did all the hard work for you.</p>
+<ul>
+	<li>Pre-requisites:
+		<ul>
+			<li>Money (jk everything here is free online, but there are minimum hardware requirements here for high-end use of LLMs)</li>
+			<li>You technically don't need a graphics processing unit (GPU/graphics card), but you'll have slower responses, and you won't be able to run higher-end LLMs</li>
+			<li>The systems I have done this with are:
+				<table border=1>
+					<tbody>
+						<tr><th></th><th>Desktop</th><th>Laptop</th></tr>
+						<tr><td>CPU</td><td>i7-12700</td><td>i7-10750H</td></tr>
+						<tr><td>RAM</td><td>32GB DDR5 5200MHz</td><td>16GB DDR4 3200MHz</td></tr>
+						<tr><td>GPU</td><td>RTX 3060 Ti</td><td>1660 Ti (Mobile)</td></tr>
+						<tr><td>VRAM</td><td>8GB DDR6</td><td>6GB DDR6</td></tr>
+					</tbody>
+				</table>
+			</li>
+			
+		</ul>
+	</li>
+	<li><a href="https://www.python.org/downloads/windows/">Installing Python: get the latest Python release</a></li>
+	<li>If you have an NVIDIA GPU <a href="https://developer.nvidia.com/cuda-downloads?target_os=Windows&target_arch=x86_64&target_version=11&target_type=exe_network">Download from this link</a></li>
+	<li>Probably a good idea to download Microsoft Visual C++ Redistributables <a href="https://aka.ms/vs/17/release/vc_redist.x86.exe">x86</a> and <a href="https://aka.ms/vs/17/release/vc_redist.x64.exe">x64</a>. In case those links don't work, try <a href="https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170">this link</a></li>
+	<li><a href="https://visualstudio.microsoft.com/downloads/">Download Visual Studio Community</a>. This download is actually a downloader for different available tools you select. You need to at least select the visual studio build tools C++.</li>
+	<li>Video tutorial for the stuff above. The links above are the same links I use in the video. The video just shows how you get to each one, along with what to do after downloading and installing everything</li>
+	<video width="640" height="360" controls><source src="VideosFreeToDownloadSeriouslyGoAhead/LLMTutorial.mp4" type="video/mp4"></video>
+</ul>
